@@ -6,6 +6,7 @@ class List:
     component_lista = []
     material = set()
     hash = {}
+    redni_broj = 0
     @staticmethod
     def kvadratura_materijala(material, kolicina):
         try:
@@ -17,7 +18,9 @@ class List:
 
 
 class Component:
-    opis = ""
+    redni_broj = 0
+    oznaka = ""
+    tekstura = "-"
     kolicina = 0
     duzina = 0
     broj_kantovanih_duzina = 0
@@ -33,8 +36,8 @@ class Component:
         lista = string.split(',')
 
         self.materijal = lista[0][1:-1]
-        self.opis = lista[1][1:-1]
-        generic = re.search("^generic_", self.opis)
+        self.oznaka = lista[1][1:-1]
+        generic = re.search("^generic_", self.oznaka)
         if generic != None:
             raise Exception('Genericka komponenta je u pitanju, ne upisuj je u listu')
         self.kolicina = int(lista[5][1:-2])
@@ -67,20 +70,22 @@ class Component:
         self.duzni_metar_trake = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
         self.duzni_metar_trake *= self.kolicina
         self.duzni_metar_trake /= 1000
-        List.component_lista.append(self)
 
+        List.redni_broj += 1
+        self.redni_broj  = List.redni_broj
         List.kvadratura_materijala(self.materijal, self.kvadratura_materijala)
+        List.component_lista.append(self)
 
     def __str__(self):
 
-        return str(self.materijal) + ";" + \
-               str(self.kolicina) + ";" + \
+        return "0" + str(self.redni_broj) + ";" + \
                str(self.duzina).replace(".0","") + ";" + \
                str(self.broj_kantovanih_duzina) + ";" + \
                str(self.sirina).replace(".0","")  + ";" + \
                str(self.broj_kantovanih_sirina) + ";" + \
-               str(self.debljina).replace(".0","")  + ";" + \
-               str(self.opis) + ";" + \
+               self.oznaka + ";" + \
+               str(self.tekstura) + ";" + \
+               str(self.kolicina) + ";" + \
                str(self.kvadratura_materijala).replace(".", ",") + ";" + \
                str(self.duzni_metar_materijala).replace(".", ",")+ ";" + \
                str(self.duzni_metar_trake).replace(".", ",")

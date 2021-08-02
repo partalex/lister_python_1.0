@@ -3,14 +3,14 @@ from Klase import List
 from upisi import List
 
 
-kolone = ["Materijal;",
-          "Kolicina;",
-          "Duzina;",
-          "Broj kantovanih duzina;",
-          "Sirina;",
-          "Broj kantovanih sirina;",
-          "Debljina;",
-          "Opis;",
+kolone = ["RB;",
+          "DUZINA;",
+          "KT;",
+          "SIRINA;",
+          "KT;",
+          "OZNAKA;",
+          "T;",
+          "KOM;",
           "Kvadratura materijala;"
           "Duzni metar materijala;",
           "Duzni metar trake"
