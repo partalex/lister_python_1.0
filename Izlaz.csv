@@ -63,7 +63,7 @@ RB;DUZINA;KT;SIRINA;KT;OZNAKA;T;KOM;Kvadratura materijala;Duzni metar materijala
 062;360;0;600;0;ploca#1;-;1;0,216;0,36;0,0
 063;2980;0;600;0;ploca;-;1;1,788;2,98;0,0
 
-boja_radna_ploca;2,004
-boja_lesonit_beli;6,813850000000001
 boja_MDF_visoki_sjaj;15,735262999999998
 boja_iverica_bela;14,639523999999998
+boja_lesonit_beli;6,813850000000001
+boja_radna_ploca;2,004

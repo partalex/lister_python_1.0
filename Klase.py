@@ -86,6 +86,7 @@ class Component:
                self.oznaka + ";" + \
                str(self.tekstura) + ";" + \
                str(self.kolicina) + ";" + \
+               self.materijal + ";" + \
                str(self.kvadratura_materijala).replace(".", ",") + ";" + \
                str(self.duzni_metar_materijala).replace(".", ",")+ ";" + \
                str(self.duzni_metar_trake).replace(".", ",")

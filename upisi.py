@@ -11,6 +11,7 @@ kolone = ["RB;",
           "OZNAKA;",
           "T;",
           "KOM;",
+          "Materijal;",
           "Kvadratura materijala;"
           "Duzni metar materijala;",
           "Duzni metar trake"
