@@ -32,6 +32,15 @@ class Component:
     duzni_metar_materijala = 0
     duzni_metar_trake = 0
 
+    @staticmethod
+    def postavi_kant(broj_kantova):
+        if broj_kantova == 0:
+            return ""
+        elif broj_kantova == 1:
+            return "(x,0)"
+        else:
+            return "(x,x)"
+
     def __init__(self, string):
         lista = string.split(',')
 
@@ -80,11 +89,11 @@ class Component:
 
         return "0" + str(self.redni_broj) + ";" + \
                str(self.duzina).replace(".0","") + ";" + \
-               str(self.broj_kantovanih_duzina) + ";" + \
+               Component.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
                str(self.sirina).replace(".0","")  + ";" + \
-               str(self.broj_kantovanih_sirina) + ";" + \
+               Component.postavi_kant(self.broj_kantovanih_sirina) + ";" + \
                self.oznaka + ";" + \
-               str(self.tekstura) + ";" + \
+               "" + ";" + \
                str(self.kolicina) + ";" + \
                self.materijal + ";" + \
                str(self.kvadratura_materijala).replace(".", ",") + ";" + \
