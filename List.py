@@ -4,6 +4,7 @@ class List:
     hash = {}
     redni_broj = 0
 
+    svi_materijali = {}
 
     @staticmethod
     def kvadratura_materijala(material, kolicina):
