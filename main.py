@@ -1,4 +1,4 @@
-from Klase import Component
+from Component import Component
 from upisi import upisi
 from upisi import preuredi
 

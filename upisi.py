@@ -1,5 +1,5 @@
-from Klase import Component
-from Klase import List
+from Component import Component
+from List import List
 from upisi import List
 
 
