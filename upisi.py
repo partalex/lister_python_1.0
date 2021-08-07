@@ -1,6 +1,6 @@
-from Component import Component
-from List import List
-from upisi import List
+from element import Element
+from lista import Lista
+from upisi import Lista
 
 
 kolone = ["RB;",
@@ -23,8 +23,8 @@ def preuredi():
 def upisi():
     with open('Izlaz.csv', "w", encoding="utf-8") as file:
         file.writelines(kolone)
-        for line in  List.component_lista:
+        for line in  Lista.component_lista:
             file.write('\n' + str(line))
         file.write('\n')
-        for k in List.material:
-            file.write('\n' + k + ";" + str(List.hash[k]).replace(".", ","))
+        for k in Lista.material:
+            file.write('\n' + k + ";" + str(Lista.hash[k]).replace(".", ","))

@@ -1,22 +1,13 @@
-from Component import Component
-from upisi import upisi
-from upisi import preuredi
+import citaj
+import lista
 
 if __name__ == "__main__":
     import sys
     path = sys.argv[1]
     
-preuredi()
+citaj.read(path) # cita listu
 
-with open(path, encoding="utf-8") as file:
-    line = file.readline()
-    while line:
-        line = file.readline()
-        if line != '':
-            try:
-                Component(line)
-            except:
-                print(line)
-                pass
-
-upisi()
+for key in lista.Lista.ulaz_csv:
+    print('\n' + key)
+    for koka in lista.Lista.ulaz_csv[key]["komponente"]:
+        print(koka)

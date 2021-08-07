@@ -1,18 +1,20 @@
 import re
 import locale
-from List import List
 
-primer = {
+import traka
+from lista import Lista
+
+sablon = {
     "komponente": [],
     "povrsina": [],
     "debljina": [],
 }
 
-class Component:
+class Element:
     redni_broj = 0
     oznaka = ""
     tekstura = "-"
-    kolicina = 0
+    broj_elemenata = 0
     duzina = 0
     broj_kantovanih_duzina = 0
     sirina = 0
@@ -23,25 +25,16 @@ class Component:
     duzni_metar_materijala = 0
     duzni_metar_trake = 0
 
-    @staticmethod
-    def postavi_kant(broj_kantova):
-        if broj_kantova == 0:
-            return ""
-        elif broj_kantova == 1:
-            return "(x,0)"
-        else:
-            return "(x,x)"
-
     def __init__(self, line, broj):
-        if line[0] not in List.svi_materijali.keys():
-            List.svi_materijali[line[0]] = primer
+        if line[0] not in Lista.ulaz_csv.keys():
+            Lista.ulaz_csv[line[0]] = sablon
 
         self.oznaka = line[1]
         self.duzina = int(line[2][0: -3])
         self.sirina = int(line[3][0: -3])
         # self.debljina = int(line[4][0: -3])
 
-        self.kolicina = int(line[5])
+        self.broj_elemenata = int(line[5])
 
         kant = re.search("_kant_.+$", self.oznaka)
         if kant != None:
@@ -61,12 +54,13 @@ class Component:
                     sirina_kant = sirina_kant.group()
                     self.broj_kantovanih_sirina = int(sirina_kant[-1])
 
-        self.duzni_metar_materijala = self.duzina * self.kolicina / 1000
-        self.kvadratura_materijala = self.duzina * self.sirina * self.kolicina
+        self.duzni_metar_materijala = self.duzina * self.broj_elemenata / 1000
+        self.kvadratura_materijala = self.duzina * self.sirina * self.broj_elemenata
         self.kvadratura_materijala /= 1000000
         self.duzni_metar_trake = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
-        self.duzni_metar_trake *= self.kolicina
+        self.duzni_metar_trake *= self.broj_elemenata
         self.duzni_metar_trake /= 1000
+
 
     # def __init__(self, string):
     #     lista = string.split(',')
@@ -116,13 +110,13 @@ class Component:
 
         return "0" + str(self.redni_broj) + ";" + \
                str(self.duzina).replace(".0","") + ";" + \
-               Component.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
-               str(self.sirina).replace(".0","")  + ";" + \
-               Component.postavi_kant(self.broj_kantovanih_sirina) + ";" + \
+               traka.Traka.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
+               str(self.sirina).replace(".0","") + ";" + \
+               traka.Traka.postavi_kant(self.broj_kantovanih_sirina) + ";" + \
                self.oznaka + ";" + \
                "" + ";" + \
-               str(self.kolicina) + ";" + \
+               str(self.broj_elemenata) + ";" + \
                self.materijal + ";" + \
                str(self.kvadratura_materijala).replace(".", ",") + ";" + \
-               str(self.duzni_metar_materijala).replace(".", ",")+ ";" + \
+               str(self.duzni_metar_materijala).replace(".", ",") + ";" + \
                str(self.duzni_metar_trake).replace(".", ",")
