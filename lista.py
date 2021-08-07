@@ -1,5 +1,4 @@
 import materijal
-import element
 
 
 class Lista:
