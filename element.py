@@ -27,6 +27,7 @@ class Element:
     duzni_metar_trake = 0
 
     def __procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(self, line):
+        self.materijal = line[0]
         self.oznaka = line[1]
         self.duzina = int(line[2][0: -3])
         self.sirina = int(line[3][0: -3])
@@ -71,6 +72,8 @@ class Element:
         self.__procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(line)
         self.__odredi_kantove()  # cita katnove iz oznake pa mu trebe line kao aegument
         self.__uredi_statistiku(line)
+
+        self.__povezi()
 
     def __str__(self):
         return "0" + str(self.redni_broj) + ";" + \

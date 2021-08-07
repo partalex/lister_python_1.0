@@ -4,7 +4,7 @@ if __name__ == "__main__":
     import sys
     path = sys.argv[1]
     
-lista.read(path)
+lista.Lista.read(path)
 
 for key in lista.Lista.ulaz_csv:
     print('\n' + key)

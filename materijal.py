@@ -1,6 +1,9 @@
 
 
 class Materijal:
+    hash_Materijal = {}
+    materijali = set()
+
     def __init__(self, oznaka, debljina: int, teskstura):
         self.oznaka = oznaka
         self.debljina = debljina
@@ -16,4 +19,10 @@ class Materijal:
 
     @staticmethod
     def novi_element(elem):
-        print(elem)
+        try:
+            Materijal.materijali[elem.materijal]
+        except:
+            Materijal.materijali.add(elem.materijal)
+            Materijal.hash_Materijal[elem.materijal] = Materijal(elem.materijal, elem.debljina, elem.tekstura)
+
+        Materijal.hash_Materijal[elem.materijal].sracunaj_materijal(elem)
