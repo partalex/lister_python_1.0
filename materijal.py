@@ -1,4 +1,3 @@
-
 class Materijal:
     vrste_Materijala = {}
     set_Materijali = set()
@@ -11,7 +10,6 @@ class Materijal:
             for line in Materijal.vrste_Materijala[key].lista:
                 print(line)
 
-
     def __init__(self, oznaka, debljina: int, teskstura):
         self.oznaka = oznaka
         self.debljina = debljina
@@ -22,8 +20,8 @@ class Materijal:
         self.lista = []
 
     def sracunaj_materijal(self, elem):
-        self.kvadratura += elem.kvadratura_materijala
-        self.duzni_metar_materijala += elem.duzni_metar_materijala
+        self.kvadratura += elem.kvadratura_materijala()
+        self.duzni_metar_materijala += elem.duzni_metar_materijala()
         self.broj_elemenata += elem.broj_elemenata
 
     @staticmethod

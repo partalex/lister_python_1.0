@@ -10,7 +10,7 @@ class Traka:
         self.oznaka = oznaka
 
     def __sracunaj_traku(self, elem):
-        self.duznih_metara += elem.duzni_metar_trake
+        self.duznih_metara += elem.duzni_metar_trake()
         self.povrsina += elem.duzina * self.sirina
 
     @staticmethod

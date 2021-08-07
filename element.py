@@ -3,6 +3,7 @@ import re
 import materijal
 import traka
 
+
 class Element:
     svi_elementi = []
 
@@ -15,9 +16,6 @@ class Element:
     broj_kantovanih_sirina = 0
     debljina = 0
     materijal = ""
-    kvadratura_materijala = 0
-    duzni_metar_materijala = 0
-    duzni_metar_trake = 0
 
     @staticmethod
     def ispisi_sve():
@@ -52,13 +50,16 @@ class Element:
                     sirina_kant = sirina_kant.group()
                     self.broj_kantovanih_sirina = int(sirina_kant[-1])
 
-    def __uredi_statistiku(self, line):
-        self.duzni_metar_materijala = self.duzina * self.broj_elemenata / 1000
-        self.kvadratura_materijala = self.duzina * self.sirina * self.broj_elemenata
-        self.kvadratura_materijala /= 1000000
-        self.duzni_metar_trake = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
-        self.duzni_metar_trake *= self.broj_elemenata
-        self.duzni_metar_trake /= 1000
+    def duzni_metar_materijala(self):
+        return self.duzina * self.broj_elemenata / 1000
+
+    def kvadratura_materijala(self):
+        return self.duzina * self.sirina * self.broj_elemenata / 1000000
+
+    def duzni_metar_trake(self):
+        ret = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
+        ret *= self.broj_elemenata
+        return ret / 1000
 
     def __povezi(self):
         materijal.Materijal.novi_element(self)
@@ -69,7 +70,6 @@ class Element:
 
         self.__procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(line)
         self.__odredi_kantove()  # cita katnove iz oznake pa mu treba line kao argument
-        self.__uredi_statistiku(line)
 
         self.__povezi()
 
@@ -82,6 +82,6 @@ class Element:
                "" + ";" + \
                str(self.broj_elemenata) + ";" + \
                self.materijal + ";" + \
-               str(self.kvadratura_materijala).replace(".", ",") + ";" + \
-               str(self.duzni_metar_materijala).replace(".", ",") + ";" + \
-               str(self.duzni_metar_trake).replace(".", ",")
+               str(self.kvadratura_materijala()).replace(".", ",") + ";" + \
+               str(self.duzni_metar_materijala()).replace(".", ",") + ";" + \
+               str(self.duzni_metar_trake()).replace(".", ",")
