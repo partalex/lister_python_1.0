@@ -1,5 +1,3 @@
-import materijal
-
 
 class Traka:
     vrste_Traka = {}
@@ -20,7 +18,7 @@ class Traka:
 
     @staticmethod
     def novi_element(elem):
-        oznaka = elem.materijal + " traka: " + elem.debljina + " mm"
+        oznaka = "Traka: " + elem.materijal + "  " + str(elem.debljina) + " mm"
         try:
             Traka.set_Traka[oznaka]
         except:
