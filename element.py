@@ -1,5 +1,6 @@
 import re
 
+import materijal
 import traka
 import lista
 
@@ -58,6 +59,10 @@ class Element:
         self.duzni_metar_trake = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
         self.duzni_metar_trake *= self.broj_elemenata
         self.duzni_metar_trake /= 1000
+
+    def __povezi(self):
+        materijal.Materijal.novi_element(self)
+        traka.Traka.novi_element(self)
 
     def __init__(self, line):
         if line[0] not in lista.Lista.ulaz_csv.keys():

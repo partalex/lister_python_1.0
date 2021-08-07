@@ -1,11 +1,10 @@
-import citaj
 import lista
 
 if __name__ == "__main__":
     import sys
     path = sys.argv[1]
     
-citaj.read(path)
+lista.read(path)
 
 for key in lista.Lista.ulaz_csv:
     print('\n' + key)

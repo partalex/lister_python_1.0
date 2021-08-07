@@ -8,7 +8,8 @@ class Traka:
         self.povrsina = 0
         self.sirina = 0
 
-    def novi_element(self, elem):
+    @staticmethod
+    def novi_element(elem):
         print(elem)
 
     @staticmethod
