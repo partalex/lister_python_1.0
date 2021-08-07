@@ -9,6 +9,7 @@ sablon = {
     "debljina": [],
 }
 
+
 class Element:
     redni_broj = 0
     oznaka = ""
@@ -24,32 +25,32 @@ class Element:
     duzni_metar_materijala = 0
     duzni_metar_trake = 0
 
-    def __init__(self, line, broj):
+    def __init__(self, line):
         if line[0] not in lista.Lista.ulaz_csv.keys():
             lista.Lista.ulaz_csv[line[0]] = sablon
 
         self.oznaka = line[1]
         self.duzina = int(line[2][0: -3])
         self.sirina = int(line[3][0: -3])
-        # self.debljina = int(line[4][0: -3])
+        self.debljina = int(line[4][0: -3])
 
         self.broj_elemenata = int(line[5])
 
         kant = re.search("_kant_.+$", self.oznaka)
-        if kant != None:
+        if kant is not None:
             kant = kant.group()
             obe_kant = re.search("_obe_\d", kant)
-            if obe_kant != None:
+            if obe_kant is not None:
                 obe_kant = obe_kant.group()
                 self.broj_kantovanih_duzina = int(obe_kant[-1])
                 self.broj_kantovanih_sirina = int(obe_kant[-1])
             else:
                 duzina_kant = re.search("_duzina_\d", kant)
-                if duzina_kant != None:
+                if duzina_kant is not None:
                     duzina_kant = duzina_kant.group()
                     self.broj_kantovanih_duzina = int(duzina_kant[-1])
                 sirina_kant = re.search("_sirina_\d", kant)
-                if sirina_kant != None:
+                if sirina_kant is not None:
                     sirina_kant = sirina_kant.group()
                     self.broj_kantovanih_sirina = int(sirina_kant[-1])
 
@@ -59,7 +60,6 @@ class Element:
         self.duzni_metar_trake = self.duzina * self.broj_kantovanih_duzina + self.sirina * self.broj_kantovanih_sirina
         self.duzni_metar_trake *= self.broj_elemenata
         self.duzni_metar_trake /= 1000
-
 
     # def __init__(self, string):
     #     lista = string.split(',')
@@ -108,9 +108,9 @@ class Element:
     def __str__(self):
 
         return "0" + str(self.redni_broj) + ";" + \
-               str(self.duzina).replace(".0","") + ";" + \
+               str(self.duzina).replace(".0", "") + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
-               str(self.sirina).replace(".0","") + ";" + \
+               str(self.sirina).replace(".0", "") + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_sirina) + ";" + \
                self.oznaka + ";" + \
                "" + ";" + \

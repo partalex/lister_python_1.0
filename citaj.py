@@ -11,12 +11,7 @@ def read(ulaz):
         next(input_list)
         for line in input_list:
             generic = re.search("^generic_", line[1])
-            try:
-                if generic is not None:
-                    # raise Exception('Genericka komponenta je u pitanju, ne upisuj je u listu')
-                    raise Exception()
-            except:
+            if generic is not None:
                 continue
-
-            comp = element.Element(line, 1)
+            comp = element.Element(line)
             lista.Lista.ulaz_csv[line[0]]["komponente"].append(comp)
