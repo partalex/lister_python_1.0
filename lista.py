@@ -1,7 +1,7 @@
 import materijal
 import element
 class Lista:
-    component_lista = []
+    ulaz_csv = {}
     material = set()
     hash = {}
     redni_broj = 0
@@ -14,7 +14,6 @@ class Lista:
     def ubaci_element(self, element: element.Element):
         self.elementi.append(element)
 
-    ulaz_csv = {}
 
     @staticmethod
     def kvadratura_materijala(material, kolicina):

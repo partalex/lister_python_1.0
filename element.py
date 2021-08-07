@@ -2,7 +2,7 @@ import re
 import locale
 
 import traka
-from lista import Lista
+import lista
 
 sablon = {
     "komponente": [],
@@ -26,8 +26,8 @@ class Element:
     duzni_metar_trake = 0
 
     def __init__(self, line, broj):
-        if line[0] not in Lista.ulaz_csv.keys():
-            Lista.ulaz_csv[line[0]] = sablon
+        if line[0] not in lista.Lista.ulaz_csv.keys():
+            lista.Lista.ulaz_csv[line[0]] = sablon
 
         self.oznaka = line[1]
         self.duzina = int(line[2][0: -3])

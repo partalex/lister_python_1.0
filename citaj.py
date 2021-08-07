@@ -1,7 +1,7 @@
 import csv
 import re
-from lista import *
-from element import *
+import element
+import lista
 
 def read(ulaz):
     with open(ulaz, 'r') as file:
@@ -16,9 +16,8 @@ def read(ulaz):
             except:
                 continue
 
-            comp = Element(line, 1)
-
-            Lista.ulaz_csv[line[0]]["komponente"].append(comp)
+            comp = element.Element(line, 1)
+            lista.Lista.ulaz_csv[line[0]]["komponente"].append(comp)
 
 
 
