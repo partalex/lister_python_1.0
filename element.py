@@ -2,17 +2,10 @@ import re
 
 import materijal
 import traka
-import lista
-
-sablon = {
-    "komponente": [],
-    "povrsina": [],
-    "debljina": [],
-}
-
 
 class Element:
-    redni_broj = 0
+    svi_elementi = []
+
     oznaka = ""
     tekstura = "-"
     broj_elemenata = 0
@@ -25,6 +18,12 @@ class Element:
     kvadratura_materijala = 0
     duzni_metar_materijala = 0
     duzni_metar_trake = 0
+
+    @staticmethod
+    def ispisi_sve():
+        print("\tClass Element")
+        for elem in Element.svi_elementi:
+            print(elem)
 
     def __procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(self, line):
         self.materijal = line[0]
@@ -64,20 +63,18 @@ class Element:
     def __povezi(self):
         materijal.Materijal.novi_element(self)
         traka.Traka.novi_element(self)
+        Element.svi_elementi.append(self)
 
     def __init__(self, line):
-        if line[0] not in lista.Lista.ulaz_csv.keys():
-            lista.Lista.ulaz_csv[line[0]] = sablon
 
         self.__procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(line)
-        self.__odredi_kantove()  # cita katnove iz oznake pa mu trebe line kao aegument
+        self.__odredi_kantove()  # cita katnove iz oznake pa mu treba line kao argument
         self.__uredi_statistiku(line)
 
         self.__povezi()
 
     def __str__(self):
-        return "0" + str(self.redni_broj) + ";" + \
-               str(self.duzina).replace(".0", "") + ";" + \
+        return str(self.duzina).replace(".0", "") + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
                str(self.sirina).replace(".0", "") + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_sirina) + ";" + \

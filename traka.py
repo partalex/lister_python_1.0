@@ -1,4 +1,3 @@
-
 class Traka:
     vrste_Traka = {}
     set_Traka = set()
@@ -10,23 +9,18 @@ class Traka:
         self.sirina = sirina
         self.oznaka = oznaka
 
-
     def __sracunaj_traku(self, elem):
         self.duznih_metara += elem.duzni_metar_trake
         self.povrsina += elem.duzina * self.sirina
 
-
     @staticmethod
     def novi_element(elem):
         oznaka = "Traka: " + elem.materijal + "  " + str(elem.debljina) + " mm"
-        try:
-            Traka.set_Traka[oznaka]
-        except:
+        if oznaka not in Traka.set_Traka:
             Traka.set_Traka.add(oznaka)
-            Traka.vrste_Traka[oznaka] = Traka(elem.debljina, 1, oznaka)  # neka bude ovek debljine 1 mm traka za sad
+            Traka.vrste_Traka[oznaka] = Traka(elem.debljina, 1, oznaka)  # neka bude uvek debljine 1 mm traka za sad
 
         Traka.vrste_Traka[oznaka].__sracunaj_traku(elem)
-
 
     @staticmethod
     def postavi_kant(broj_kantova):
