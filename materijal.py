@@ -1,4 +1,4 @@
-from element import Element
+import element
 
 
 class Materijal:
@@ -10,7 +10,7 @@ class Materijal:
         self.duzni_metar_materijala = 0
         self.broj_elemenata = 0
 
-    def sracunaj_materijal(self, element: Element):
-        self.kvadratura += element.kvadratura_materijala
-        self.duzni_metar_materijala += element.duzni_metar_materijala
-        self.broj_elemenata += element.broj_elemenata
+    def sracunaj_materijal(self, elem):
+        self.kvadratura += elem.kvadratura_materijala
+        self.duzni_metar_materijala += elem.duzni_metar_materijala
+        self.broj_elemenata += elem.broj_elemenata

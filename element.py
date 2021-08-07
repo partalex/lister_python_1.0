@@ -1,5 +1,4 @@
 import re
-import locale
 
 import traka
 import lista

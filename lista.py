@@ -1,5 +1,7 @@
 import materijal
 import element
+
+
 class Lista:
     ulaz_csv = {}
     material = set()
@@ -11,9 +13,8 @@ class Lista:
         self.povrsina = 0
         self.elementi = []
 
-    def ubaci_element(self, element: element.Element):
-        self.elementi.append(element)
-
+    def ubaci_element(self, elem):
+        self.elementi.append(elem)
 
     @staticmethod
     def kvadratura_materijala(material, kolicina):
@@ -23,4 +24,3 @@ class Lista:
             Lista.material.add(material)
             Lista.hash[material] = 0
         Lista.hash[material] += kolicina
-

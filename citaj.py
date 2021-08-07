@@ -3,6 +3,7 @@ import re
 import element
 import lista
 
+
 def read(ulaz):
     with open(ulaz, 'r') as file:
         input_list = csv.reader(file)
@@ -11,15 +12,11 @@ def read(ulaz):
         for line in input_list:
             generic = re.search("^generic_", line[1])
             try:
-                if generic != None:
-                    raise Exception('Genericka komponenta je u pitanju, ne upisuj je u listu')
+                if generic is not None:
+                    # raise Exception('Genericka komponenta je u pitanju, ne upisuj je u listu')
+                    raise Exception()
             except:
                 continue
 
             comp = element.Element(line, 1)
             lista.Lista.ulaz_csv[line[0]]["komponente"].append(comp)
-
-
-
-
-
