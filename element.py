@@ -18,10 +18,11 @@ class Element:
     materijal = ""
 
     @staticmethod
-    def ispisi_sve():
-        print("\tClass Element")
+    def csv_array():
+        data = ["Duzina;KT;Sirina;KT1;Oznaka;KOM;Materijal;m2;Duznih m;Duznih m trake"]
         for elem in Element.svi_elementi:
-            print(elem)
+            data.append(str(elem))
+        return data
 
     def __procitaj_oznaka_duzina_sirina_debljina_broj_elemenata(self, line):
         self.materijal = line[0]
@@ -84,3 +85,4 @@ class Element:
                str(self.kvadratura_materijala()).replace(".", ",") + ";" + \
                str(self.duzni_metar_materijala()).replace(".", ",") + ";" + \
                str(self.duzni_metar_trake()).replace(".", ",")
+

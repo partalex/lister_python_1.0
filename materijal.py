@@ -14,16 +14,20 @@ class Materijal:
         self.broj_elemenata = 0
         self.lista = []
 
+    def __str__(self):
+        data = self.oznaka + ";" + \
+               str(self.debljina) + ";" + \
+               str(self.kvadratura).replace('.', ',') + ";" + \
+               str(self.duzni_metar_materijala).replace('.', ',') + ";" + \
+               str(self.broj_elemenata)
+        return data
+
     @staticmethod
-    def csv_statistika():
+    def csv_array():
         data = ["Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata"]
-        for oznaka in Materijal.set_Materijali:
-            mat = Materijal.vrste_Materijala[oznaka]
-            data.append(mat.oznaka + ";" + \
-                        str(mat.debljina) + ";" + \
-                        str(mat.kvadratura).replace('.', ',') + ";" + \
-                        str(mat.duzni_metar_materijala).replace('.', ',') + ";" + \
-                        str(mat.broj_elemenata))
+
+        for key in Materijal.set_Materijali:
+            data.append(Materijal.vrste_Materijala[key])
         return data
 
     def sracunaj_materijal(self, elem):
@@ -51,24 +55,8 @@ class Materijal:
                    traka.Traka.postavi_kant(elem.broj_kantovanih_sirina) + ";" + \
                    elem.oznaka + ";" + \
                    self.teskstura + ";" + \
-                   str(elem.broj_elemenata) + ";"
+                   str(elem.broj_elemenata)
             data.append(line)
             rb += 1
 
         return data
-
-    @staticmethod
-    def ispisi_sve():
-        print("\tClass Materijal")
-        print("Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata")
-
-        for key in Materijal.set_Materijali:
-            print(Materijal.vrste_Materijala[key])
-
-    def __str__(self):
-        info = self.oznaka + ";" + \
-               str(self.debljina) + ";" + \
-               str(self.kvadratura).replace('.', ',') + ";" + \
-               str(self.duzni_metar_materijala).replace('.', ',') + ";" + \
-               str(self.broj_elemenata)
-        return info

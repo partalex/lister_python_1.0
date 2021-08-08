@@ -13,14 +13,6 @@ class Traka:
         self.duznih_metara += elem.duzni_metar_trake()
         self.povrsina += (self.duznih_metara * self.sirina / 1000) * elem.broj_elemenata
 
-    @staticmethod
-    def ispisi_sve():
-        print("\nClass Traka")
-        print("Oznaka;Debljina;Duznih metara;Sirina;Povrsina")
-
-        for key in Traka.set_Traka:
-            print(Traka.vrste_Traka[key])
-
     def __str__(self):
         return self.oznaka + ";" + \
                str(self.debljina) + ";" + \
@@ -49,7 +41,7 @@ class Traka:
             return "(x,x)"
 
     @staticmethod
-    def csv_statistika():
+    def csv_array():
         data = ["Oznaka;Debljina;Duznih metara;Sirina;Povrsina"]
         for oznaka in Traka.set_Traka:
             tr = Traka.vrste_Traka[oznaka]

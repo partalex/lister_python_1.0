@@ -11,8 +11,11 @@ if __name__ == "__main__":
 
 citaj_csv.Citaj.read(path)
 
-materijal.Materijal.ispisi_sve()
-element.Element.ispisi_sve()
-traka.Traka.ispisi_sve()
+# for line in materijal.Materijal.csv_array():
+#     print(line)
+# for line in element.Element.csv_array():
+#     print(line)
+# for line in traka.Traka.csv_array():
+#     print(line)
 
 upisi_csv.upisi()
