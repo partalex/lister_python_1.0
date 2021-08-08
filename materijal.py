@@ -66,7 +66,6 @@ class Materijal:
             print(Materijal.vrste_Materijala[key])
 
     def __str__(self):
-        # header = "Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata"
         info = self.oznaka + ";" + \
                str(self.debljina) + ";" + \
                str(self.kvadratura).replace('.', ',') + ";" + \

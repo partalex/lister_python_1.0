@@ -1,4 +1,4 @@
-import citaj
+import citaj_csv
 import upisi_csv
 import materijal
 import traka
@@ -9,10 +9,10 @@ if __name__ == "__main__":
 
     path = sys.argv[1]
 
-citaj.Citaj.read(path)
+citaj_csv.Citaj.read(path)
 
-# materijal.Materijal.ispisi_sve()
-# element.Element.ispisi_sve()
-# traka.Traka.ispisi_sve()
+materijal.Materijal.ispisi_sve()
+element.Element.ispisi_sve()
+traka.Traka.ispisi_sve()
 
 upisi_csv.upisi()

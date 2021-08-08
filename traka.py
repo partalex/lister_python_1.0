@@ -16,6 +16,8 @@ class Traka:
     @staticmethod
     def ispisi_sve():
         print("\nClass Traka")
+        print("Oznaka;Debljina;Duznih metara;Sirina;Povrsina")
+
         for key in Traka.set_Traka:
             print(Traka.vrste_Traka[key])
 
@@ -28,6 +30,8 @@ class Traka:
 
     @staticmethod
     def novi_element(elem):
+        if elem.broj_kantovanih_duzina + elem.broj_kantovanih_sirina == 0:
+            return
         oznaka = "Traka: " + elem.materijal + " " + str(elem.debljina) + " mm"
         if oznaka not in Traka.set_Traka:
             Traka.set_Traka.add(oznaka)
