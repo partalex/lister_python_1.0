@@ -45,20 +45,19 @@ class Traka:
             return "(x,x)"
 
     def info(self):
-        data = ["Oznaka;Debljna;Duznih metara;Sirina;Povrsina"]
-        data.append(self.oznaka + ";" +
-                    str(self.debljina) + ";" +
-                    str(self.duznih_metara).replace(".", ",") + ";" +
-                    str(self.sirina) + ";" +
-                    str(self.povrsina) + ";")
+        data = self.oznaka + ";" + \
+                str(self.debljina) + ";" + \
+                str(self.duznih_metara).replace(".", ",") + ";" + \
+                str(self.sirina) + ";" + \
+                str(self.povrsina) + ";"
         return data
 
+
     @staticmethod
-    def csv_export():
-        data = []
-        for key in Traka.set_Traka:
-            for line in Traka.vrste_Traka[key].info():
-                data.append(line)
-            data.append("\n")
+    def csv_statistika():
+        data = ["Oznaka;Debljina;Duznih metara;Sirina;Povrsina"]
+        for oznaka in Traka.set_Traka:
+            tr = Traka.vrste_Traka[oznaka]
+            data.append(tr.info())
 
         return data

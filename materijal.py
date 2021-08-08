@@ -27,8 +27,8 @@ class Materijal:
             mat = Materijal.vrste_Materijala[oznaka]
             data.append(mat.oznaka + ";" + \
                         str(mat.debljina) + ";" + \
-                        str(mat.kvadratura) + ";" + \
-                        str(mat.duzni_metar_materijala) + ";" + \
+                        str(mat.kvadratura).replace('.', ',') + ";" + \
+                        str(mat.duzni_metar_materijala).replace('.', ',') + ";" + \
                         str(mat.broj_elemenata))
         return data
 
@@ -47,9 +47,8 @@ class Materijal:
         Materijal.vrste_Materijala[elem.materijal].lista.append(elem)
 
     def csv_export(self):
-        data = []
+        data = ["RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM"]
         rb = 1
-        # data.append("\n" + kolone)
         for elem in self.lista:
             line = "0" + str(rb) + ";" + \
                    str(elem.duzina).replace(".0", "") + ";" + \
@@ -63,27 +62,3 @@ class Materijal:
             rb += 1
 
         return data
-
-    # @staticmethod
-    # def csv_export():
-    #     kolone = "RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM"
-    #     data = [kolone]
-    #     for key in Materijal.set_Materijali:
-    #         for line in Materijal.vrste_Materijala[key].info():
-    #             data.append(line)
-    #         rb = 1
-    #         # data.append("\n" + kolone)
-    #         for elem in Materijal.vrste_Materijala[key].lista:
-    #             line = "0" + str(rb) + ";" + \
-    #                    str(elem.duzina).replace(".0", "") + ";" + \
-    #                    traka.Traka.postavi_kant(elem.broj_kantovanih_duzina) + ";" + \
-    #                    str(elem.sirina).replace(".0", "") + ";" + \
-    #                    traka.Traka.postavi_kant(elem.broj_kantovanih_sirina) + ";" + \
-    #                    elem.oznaka + ";" + \
-    #                    Materijal.vrste_Materijala[key].teskstura + ";" + \
-    #                    str(elem.broj_elemenata) + ";"
-    #             data.append(line)
-    #             rb += 1
-    #         # data.append("\n")
-    #
-    #     return data
