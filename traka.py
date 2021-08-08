@@ -11,11 +11,24 @@ class Traka:
 
     def __sracunaj_traku(self, elem):
         self.duznih_metara += elem.duzni_metar_trake()
-        self.povrsina += elem.duzina * self.sirina
+        self.povrsina += (self.duznih_metara * self.sirina / 1000) * elem.broj_elemenata
+
+    @staticmethod
+    def ispisi_sve():
+        print("\nClass Traka")
+        for key in Traka.set_Traka:
+            print(Traka.vrste_Traka[key])
+
+    def __str__(self):
+        return self.oznaka + ";" + \
+               str(self.debljina) + ";" + \
+               str(self.duznih_metara) + ";" + \
+               str(self.sirina) + ";" + \
+               str(self.povrsina)
 
     @staticmethod
     def novi_element(elem):
-        oznaka = "Traka: " + elem.materijal + "  " + str(elem.debljina) + " mm"
+        oznaka = "Traka: " + elem.materijal + " " + str(elem.debljina) + " mm"
         if oznaka not in Traka.set_Traka:
             Traka.set_Traka.add(oznaka)
             Traka.vrste_Traka[oznaka] = Traka(elem.debljina, 1, oznaka)  # neka bude uvek debljine 1 mm traka za sad
