@@ -74,12 +74,11 @@ class Element:
         self.__povezi()
 
     def __str__(self):
-        return str(self.duzina).replace(".0", "") + ";" + \
+        return str(self.duzina) + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_duzina) + ";" + \
-               str(self.sirina).replace(".0", "") + ";" + \
+               str(self.sirina) + ";" + \
                traka.Traka.postavi_kant(self.broj_kantovanih_sirina) + ";" + \
                self.oznaka + ";" + \
-               "" + ";" + \
                str(self.broj_elemenata) + ";" + \
                self.materijal + ";" + \
                str(self.kvadratura_materijala()).replace(".", ",") + ";" + \

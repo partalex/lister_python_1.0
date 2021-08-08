@@ -22,9 +22,9 @@ class Traka:
     def __str__(self):
         return self.oznaka + ";" + \
                str(self.debljina) + ";" + \
-               str(self.duznih_metara) + ";" + \
+               str(self.duznih_metara).replace(".", ",") + ";" + \
                str(self.sirina) + ";" + \
-               str(self.povrsina)
+               str(self.povrsina).replace(".", ",")
 
     @staticmethod
     def novi_element(elem):
@@ -44,20 +44,11 @@ class Traka:
         else:
             return "(x,x)"
 
-    def info(self):
-        data = self.oznaka + ";" + \
-                str(self.debljina) + ";" + \
-                str(self.duznih_metara).replace(".", ",") + ";" + \
-                str(self.sirina) + ";" + \
-                str(self.povrsina) + ";"
-        return data
-
-
     @staticmethod
     def csv_statistika():
         data = ["Oznaka;Debljina;Duznih metara;Sirina;Povrsina"]
         for oznaka in Traka.set_Traka:
             tr = Traka.vrste_Traka[oznaka]
-            data.append(tr.info())
+            data.append(str(tr))
 
         return data

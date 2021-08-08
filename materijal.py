@@ -5,12 +5,6 @@ class Materijal:
     vrste_Materijala = {}
     set_Materijali = set()
 
-    @staticmethod
-    def ispisi_sve():
-        print("\tClass Materijal")
-        for key in Materijal.set_Materijali:
-            print(Materijal.vrste_Materijala[key])
-
     def __init__(self, oznaka, debljina: int, teskstura):
         self.oznaka = oznaka
         self.debljina = debljina
@@ -62,3 +56,20 @@ class Materijal:
             rb += 1
 
         return data
+
+    @staticmethod
+    def ispisi_sve():
+        print("\tClass Materijal")
+        print("Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata")
+
+        for key in Materijal.set_Materijali:
+            print(Materijal.vrste_Materijala[key])
+
+    def __str__(self):
+        # header = "Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata"
+        info = self.oznaka + ";" + \
+               str(self.debljina) + ";" + \
+               str(self.kvadratura).replace('.', ',') + ";" + \
+               str(self.duzni_metar_materijala).replace('.', ',') + ";" + \
+               str(self.broj_elemenata)
+        return info

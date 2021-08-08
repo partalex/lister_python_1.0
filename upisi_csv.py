@@ -28,4 +28,3 @@ def upisi():
     materijal_statistika()
     materijal_liste()
     traka_statistika()
-
