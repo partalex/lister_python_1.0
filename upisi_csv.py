@@ -1,6 +1,3 @@
-import citaj
-import csv
-
 import materijal
 import traka
 

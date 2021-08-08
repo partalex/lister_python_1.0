@@ -1,7 +1,6 @@
 import csv
 import re
 import element
-import materijal
 
 
 class Citaj:

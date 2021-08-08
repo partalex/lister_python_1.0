@@ -1,5 +1,3 @@
-import csv
-
 import traka
 
 
@@ -12,8 +10,6 @@ class Materijal:
         print("\tClass Materijal")
         for key in Materijal.set_Materijali:
             print(Materijal.vrste_Materijala[key])
-            # for line in Materijal.vrste_Materijala[key].lista:
-            #     print(line)
 
     def __init__(self, oznaka, debljina: int, teskstura):
         self.oznaka = oznaka
@@ -23,14 +19,6 @@ class Materijal:
         self.duzni_metar_materijala = 0
         self.broj_elemenata = 0
         self.lista = []
-
-    def materijal_info(self):
-        data = ["Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata", self.oznaka + ";" + \
-                str(self.debljina) + ";" + \
-                str(self.kvadratura) + ";" + \
-                str(self.duzni_metar_materijala) + ";" + \
-                str(self.broj_elemenata)]
-        return data
 
     def sracunaj_materijal(self, elem):
         self.kvadratura += elem.kvadratura_materijala()
@@ -46,13 +34,20 @@ class Materijal:
         Materijal.vrste_Materijala[elem.materijal].sracunaj_materijal(elem)
         Materijal.vrste_Materijala[elem.materijal].lista.append(elem)
 
+    def info(self):
+        data = ["Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata", self.oznaka + ";" + \
+                str(self.debljina) + ";" + \
+                str(self.kvadratura) + ";" + \
+                str(self.duzni_metar_materijala) + ";" + \
+                str(self.broj_elemenata)]
+        return data
+
     @staticmethod
     def csv_export():
         kolone = "RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM"
-        line = ""
         data = []
         for key in Materijal.set_Materijali:
-            for line in Materijal.vrste_Materijala[key].materijal_info():
+            for line in Materijal.vrste_Materijala[key].info():
                 data.append(line)
             rb = 1
             data.append("\n" + kolone)

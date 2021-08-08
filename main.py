@@ -1,8 +1,5 @@
-import element
 import citaj
 import upisi_csv
-import materijal
-import traka
 
 if __name__ == "__main__":
     import sys

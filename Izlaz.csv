@@ -1,4 +1,19 @@
 Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata
+boja_lesonit_beli;3;6.813850000000001;10.482;11
+
+RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM
+01;2198;;588;;lesonit;-;1;
+02;776;;1282;;lesonit;-;1;
+03;776;;388;;lesonit;-;1;
+04;776;;588;;lesonit;-;2;
+05;830;;588;;lesonit;-;1;
+06;870;;278;;lesonit;-;1;
+07;870;;658;;lesonit;-;1;
+08;870;;661;;lesonit;-;1;
+09;870;;825;;lesonit;-;2;
+
+
+Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata
 boja_MDF_visoki_sjaj;18;15.735262999999998;37.666000000000004;45
 
 RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM
@@ -70,18 +85,11 @@ RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM
 02;2980;;600;;ploca;-;1;
 
 
-Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata
-boja_lesonit_beli;3;6.813850000000001;10.482;11
-
-RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM
-01;2198;;588;;lesonit;-;1;
-02;776;;1282;;lesonit;-;1;
-03;776;;388;;lesonit;-;1;
-04;776;;588;;lesonit;-;2;
-05;830;;588;;lesonit;-;1;
-06;870;;278;;lesonit;-;1;
-07;870;;658;;lesonit;-;1;
-08;870;;661;;lesonit;-;1;
-09;870;;825;;lesonit;-;2;
-
-
+Oznaka;Debljna;Duznih metara;Sirina;Povrsina
+Traka: boja_iverica_bela 18 mm;1;52.34799999999999;18;29.863332;
+Oznaka;Debljna;Duznih metara;Sirina;Povrsina
+Traka: boja_lesonit_beli 3 mm;1;0.0;3;0.0;
+Oznaka;Debljna;Duznih metara;Sirina;Povrsina
+Traka: boja_MDF_visoki_sjaj 18 mm;1;102.872;18;40.134240000000005;
+Oznaka;Debljna;Duznih metara;Sirina;Povrsina
+Traka: boja_radna_ploca 12 mm;1;0.0;12;0.0;
