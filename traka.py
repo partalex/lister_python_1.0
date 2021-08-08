@@ -48,7 +48,7 @@ class Traka:
         data = ["Oznaka;Debljna;Duznih metara;Sirina;Povrsina"]
         data.append(self.oznaka + ";" +
                     str(self.debljina) + ";" +
-                    str(self.duznih_metara) + ";" +
+                    str(self.duznih_metara).replace(".", ",") + ";" +
                     str(self.sirina) + ";" +
                     str(self.povrsina) + ";")
         return data
@@ -59,6 +59,6 @@ class Traka:
         for key in Traka.set_Traka:
             for line in Traka.vrste_Traka[key].info():
                 data.append(line)
+            data.append("\n")
 
         return data
-

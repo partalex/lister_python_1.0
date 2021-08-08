@@ -20,6 +20,18 @@ class Materijal:
         self.broj_elemenata = 0
         self.lista = []
 
+    @staticmethod
+    def csv_statistika():
+        data = ["Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata"]
+        for oznaka in Materijal.set_Materijali:
+            mat = Materijal.vrste_Materijala[oznaka]
+            data.append(mat.oznaka + ";" + \
+                        str(mat.debljina) + ";" + \
+                        str(mat.kvadratura) + ";" + \
+                        str(mat.duzni_metar_materijala) + ";" + \
+                        str(mat.broj_elemenata))
+        return data
+
     def sracunaj_materijal(self, elem):
         self.kvadratura += elem.kvadratura_materijala()
         self.duzni_metar_materijala += elem.duzni_metar_materijala()
@@ -34,34 +46,44 @@ class Materijal:
         Materijal.vrste_Materijala[elem.materijal].sracunaj_materijal(elem)
         Materijal.vrste_Materijala[elem.materijal].lista.append(elem)
 
-    def info(self):
-        data = ["Oznaka;Debljina;Kvadratura;Duznih metara materijala;Broj elemenata", self.oznaka + ";" + \
-                str(self.debljina) + ";" + \
-                str(self.kvadratura) + ";" + \
-                str(self.duzni_metar_materijala) + ";" + \
-                str(self.broj_elemenata)]
-        return data
-
-    @staticmethod
-    def csv_export():
-        kolone = "RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM"
+    def csv_export(self):
         data = []
-        for key in Materijal.set_Materijali:
-            for line in Materijal.vrste_Materijala[key].info():
-                data.append(line)
-            rb = 1
-            data.append("\n" + kolone)
-            for elem in Materijal.vrste_Materijala[key].lista:
-                line = "0" + str(rb) + ";" + \
-                       str(elem.duzina).replace(".0", "") + ";" + \
-                       traka.Traka.postavi_kant(elem.broj_kantovanih_duzina) + ";" + \
-                       str(elem.sirina).replace(".0", "") + ";" + \
-                       traka.Traka.postavi_kant(elem.broj_kantovanih_sirina) + ";" + \
-                       elem.oznaka + ";" + \
-                       Materijal.vrste_Materijala[key].teskstura + ";" + \
-                       str(elem.broj_elemenata) + ";"
-                data.append(line)
-                rb += 1
-            data.append("\n")
+        rb = 1
+        # data.append("\n" + kolone)
+        for elem in self.lista:
+            line = "0" + str(rb) + ";" + \
+                   str(elem.duzina).replace(".0", "") + ";" + \
+                   traka.Traka.postavi_kant(elem.broj_kantovanih_duzina) + ";" + \
+                   str(elem.sirina).replace(".0", "") + ";" + \
+                   traka.Traka.postavi_kant(elem.broj_kantovanih_sirina) + ";" + \
+                   elem.oznaka + ";" + \
+                   self.teskstura + ";" + \
+                   str(elem.broj_elemenata) + ";"
+            data.append(line)
+            rb += 1
 
         return data
+
+    # @staticmethod
+    # def csv_export():
+    #     kolone = "RB;DUZINA;KT;SIRINA;KT1;OZNAKA;T;KOM"
+    #     data = [kolone]
+    #     for key in Materijal.set_Materijali:
+    #         for line in Materijal.vrste_Materijala[key].info():
+    #             data.append(line)
+    #         rb = 1
+    #         # data.append("\n" + kolone)
+    #         for elem in Materijal.vrste_Materijala[key].lista:
+    #             line = "0" + str(rb) + ";" + \
+    #                    str(elem.duzina).replace(".0", "") + ";" + \
+    #                    traka.Traka.postavi_kant(elem.broj_kantovanih_duzina) + ";" + \
+    #                    str(elem.sirina).replace(".0", "") + ";" + \
+    #                    traka.Traka.postavi_kant(elem.broj_kantovanih_sirina) + ";" + \
+    #                    elem.oznaka + ";" + \
+    #                    Materijal.vrste_Materijala[key].teskstura + ";" + \
+    #                    str(elem.broj_elemenata) + ";"
+    #             data.append(line)
+    #             rb += 1
+    #         # data.append("\n")
+    #
+    #     return data
