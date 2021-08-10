@@ -1,22 +1,21 @@
-from Component import Component
-from upisi import upisi
-from upisi import preuredi
+import citaj_csv
+import upisi_csv
+import materijal
+import traka
+import element
 
 if __name__ == "__main__":
     import sys
+
     path = sys.argv[1]
-    
-preuredi()
 
-with open(path, encoding="utf-8") as file:
-    line = file.readline()
-    while line:
-        line = file.readline()
-        if line != '':
-            try:
-                Component(line)
-            except:
-                print(line)
-                pass
+citaj_csv.Citaj.read(path)
 
-upisi()
+# for line in materijal.Materijal.csv_array():
+#     print(line)
+# for line in element.Element.csv_array():
+#     print(line)
+# for line in traka.Traka.csv_array():
+#     print(line)
+
+upisi_csv.upisi()
