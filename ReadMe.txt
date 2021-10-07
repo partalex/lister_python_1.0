@@ -1,0 +1,1 @@
+python main.py ulaz.csv
