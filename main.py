@@ -8,6 +8,9 @@ if __name__ == "__main__":
     import sys
 
     path = sys.argv[1]
+else:
+    print("nevelidni argumenit")
+    exit(1);
 
 citaj_csv.Citaj.read(path)
 
